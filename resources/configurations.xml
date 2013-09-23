@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+	<configuration id="360">
+		<property name="app_secret">123</property>
+		<property name="preUrl">
+			<![CDATA[https://openapi.360.cn]]>
+		</property>
+		<property name="tokenUrl">
+			<![CDATA[/oauth2/access_token?grant_type=authorization_code&code=%s&client_id=%s&client_secret=%s&redirect_uri=oob]]>
+		</property>
+		<property name="refreshTokenUrl">
+			<![CDATA[/oauth2/access_token?grant_type=refresh_token&refresh_token=%s&client_id=%s&client_secret=%s&scope=basic]]>
+		</property>
+		<property name="userInfoUrl">
+			<![CDATA[/user/me.json?access_token=%s&fields=%s]]>
+		</property>
+	</configuration>
+	
+	<configuration id="gameserver">
+		<property name="port">9000</property>
+	</configuration>
+</configurations>

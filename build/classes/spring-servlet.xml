@@ -17,91 +17,78 @@
     <!-- 会自动注册了validator  ConversionService  -->
     <mvc:annotation-driven validator="validator" conversion-service="conversion-service"/>
 	
-	<!-- <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="cn.ohyeah.statics.intercept.LoginIntercept">
-            	<property name="indexUrl" value="/index"/>
-            	<property name="loginUrl" value="/login"/>
-            </bean>
-        </mvc:interceptor>
-    </mvc:interceptors> -->
-    
     <!-- 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册-->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
-        <!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
         <property name="validationMessageSource" ref="messageSource"/>
     </bean>
      <bean id="conversion-service" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"  /> 
-    <!-- 开启controller注解支持 -->
-    <!-- 注：如果base-package=cn.javass 则注解事务不起作用 TODO 读源码 -->
-    <context:component-scan base-package="cn.ohyeah.statics.controller">
+    
+    <context:component-scan base-package="cn.ohyeah.mobile.platform.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
 	<!-- 映射到首页 -->
-    <mvc:view-controller path="/" view-name="forward:/index"/>
+    <!-- <mvc:view-controller path="/" view-name="forward:/index"/> -->
     
     <!-- 
     当在web.xml 中   DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源
     <mvc:default-servlet-handler/>
-    静态资源映射
     <mvc:resources mapping="/images/**" location="/image/" />
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/js/**" location="/js/" /> -->
-
-	 <!-- HandlerMapping -->
-   <!--  <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-    <property name="order" value="0" /> 
-        <property name="interceptors">
-            <list>
-               <ref bean="loginHandlerInterceptor"/>
-               <bean class="cn.ohyeah.statics.intercept.LoginIntercept">
-               	<property name="loginUrl" value="/index"/>
-               </bean>
-            </list>
-        </property>
-    </bean> -->
-
-    <!-- ========================= VIEW定义 ========================= -->
-    <!-- bean name view resolver-->
-    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1"/>  
-     
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" p:order="2">  
-         <property name="viewResolvers">  
-             <list>  
-                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-                    <property name="contentType" value="text/html"/>
-                    <property name="prefix" value="/web/"/>
-                    <property name="suffix" value=".jsp"/>
-                </bean>
-            </list>  
-        </property>  
-        <!-- 可配置Not Found url
-        <property name="defaultViews">
-            <list>  
-                 <bean class="org.springframework.web.servlet.view.JstlView" p:url="/notfound"/>  
-            </list>  
-        </property>  --> 
-    </bean>  
-
-    <bean id="myHandlerExceptionResolver" class="cn.ohyeah.statics.utils.MyHandlerExceptionResolver"/> 
-
+    
+    <!-- 拦截器配置开始  -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/*"/>
+            <bean class="cn.ohyeah.mobile.platform.intercept.GlobalIntercept">
+            	<!-- <property name="indexUrl" value="/index"/> -->
+            </bean>
+        </mvc:interceptor>  
+    </mvc:interceptors>
+	
+	<!-- 视图解析器一 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1"/> 
+	<bean name="xmlModelAndView" class="org.springframework.web.servlet.view.xml.MarshallingView">
+    	<constructor-arg>
+	        <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+	            <property name="classesToBeBound">
+	                <array>
+	                    <value>cn.ohyeah.mobile.bussness.model.ReturnInfo</value>
+	                    <value>cn.ohyeah.mobile.bussness.model.DataInfo</value>
+	                    <value>cn.ohyeah.mobile.bussness.model.UserInfo</value>
+	                </array>
+	            </property>
+	        </bean>
+    	</constructor-arg>
+    </bean>
+	
+	<!-- 视图解析器二 -->
+	<bean name="jsonView" class="cn.ohyeah.mobile.platform.view.MappingJacksonJsonView">
+		<property name="encoding">
+			<value type="org.codehaus.jackson.JsonEncoding">UTF8</value>
+		</property>
+		<property name="contentType" value="text/html;charset=UTF-8"/>
+	</bean>
+    
+    <!-- 视图解析器三 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="contentType" value="text/html"/>
+        <property name="prefix" value="/web/"/>
+        <property name="suffix" value=".jsp"/>
+	</bean>
+    
     <!-- 控制器异常处理 -->
      <!-- <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
               <props>
-                  <prop key="java.lang.Exception">
-                        error_all
-                </prop>
+                  <prop key="java.lang.Exception">error</prop>
             </props>
         </property>
-    </bean>  -->
+    </bean> -->
     
-<!--    <bean id="loginHandlerInterceptor" class="cn.ohyeah.statics.intercept.LoginIntercept">
-        <property name="loginUrl" value="/index"></property>
-    </bean>    
- -->
+    <bean id="exceptionResolver" class="cn.ohyean.mobile.exception.ExceptionResolver"/>
+    
 </beans>

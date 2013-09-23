@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-恭喜${user.name}，您已登入成功！
+success page
 </body>
 </html>

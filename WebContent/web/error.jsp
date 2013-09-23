@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-this's error page, exception: ${model.error }<br>
-${model.ex }
+this's error page, exception: </br>
+${model.error }<br>
 </body>
 </html>

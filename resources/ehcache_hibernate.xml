@@ -8,7 +8,7 @@
       overflowToDisk="false">
     </defaultCache>
 
-   <cache name="cn.ohyeah.statics.model.User"
+   <cache name="cn.ohyeah.mobile.platform.model.User"
       maxElementsInMemory="2000"
       eternal="false"
       timeToIdleSeconds="3600"
