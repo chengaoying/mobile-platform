@@ -11,6 +11,12 @@ drop table if exists tb_resources;
 
 drop table if exists tb_user;
 
+drop table if exists tb_prize;
+
+drop table if exists tb_prize_record;
+
+drop table if exists tb_activity_prize;
+
 
 /*==============================================================*/
 /* Table: tb_product                                            */
