@@ -16,7 +16,8 @@
 		</property>
 	</configuration>
 	
-	<configuration id="gameserver">
-		<property name="port">9000</property>
+	<configuration id="resourcesPath">
+		<property name="prize"><![CDATA[/data/prize]]></property>
+		<property name="favor"><![CDATA[/data/favor]]></property>
 	</configuration>
 </configurations>

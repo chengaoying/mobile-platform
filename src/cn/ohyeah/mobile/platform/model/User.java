@@ -9,7 +9,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-
+/**
+ * 用户实体类
+ * @author Administrator
+ *
+ */
 @Entity
 @Table(name="tb_user")
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)

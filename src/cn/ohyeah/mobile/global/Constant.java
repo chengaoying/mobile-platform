@@ -8,4 +8,7 @@ public class Constant {
 	public static final String JSON = "json";
 	public static final String XML = "xml";
 	
+	public static final int RESOURCE_PRIZE = 0;
+	public static final int RESOURCE_FAVOR = 1;
+	
 }

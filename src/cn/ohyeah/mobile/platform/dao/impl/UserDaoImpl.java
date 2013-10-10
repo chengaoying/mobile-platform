@@ -15,7 +15,6 @@ public class UserDaoImpl extends BaseDaoImpl  implements IUserDao {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
 	
-	
 	@Override
 	public void save(User user) {
 		getSession().save(user);
