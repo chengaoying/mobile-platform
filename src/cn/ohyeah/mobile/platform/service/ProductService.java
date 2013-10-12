@@ -1,5 +1,7 @@
 package cn.ohyeah.mobile.platform.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -30,7 +32,7 @@ public class ProductService {
 		productDao.saveOrUpdate(product);
 	}
 	
-	public void setProductDao(IProductDao productDao) {
-		this.productDao = productDao;
+	public List<Product> queryList(){
+		return productDao.queryList();
 	}
 }

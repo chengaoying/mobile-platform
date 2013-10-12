@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.ohyeah.mobile.platform.model.Resource;
+import cn.ohyeah.mobile.platform.model.Prize;
 import cn.ohyeah.mobile.platform.model.UserPrizeRecord;
-import cn.ohyeah.mobile.platform.service.ResourceService;
+import cn.ohyeah.mobile.platform.service.PrizeService;
 import cn.ohyeah.mobile.platform.service.UserPrizeRecordService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,21 +23,13 @@ public class UserPrizeRecordTest {
 	private UserPrizeRecordService userPrizeRecordService;
 	
 	@Autowired
-	@Qualifier("resourceService")
-	private ResourceService resourceService;
-	
-	public void setResourceService(ResourceService resourceService) {
-		this.resourceService = resourceService;
-	}
-	public void setUserPrizeRecordService(
-			UserPrizeRecordService userPrizeRecordService) {
-		this.userPrizeRecordService = userPrizeRecordService;
-	}
+	@Qualifier("prizeService")
+	private PrizeService prizeService;
 	
 	@Test
 	public void save(){
 		for(int i=0;i<10;i++){
-			Resource resource = resourceService.loadById(1+i);
+			Prize resource = prizeService.loadById(1+i);
 			UserPrizeRecord record = new UserPrizeRecord();
 			record.setPrize(resource);
 			record.setUserid(1);
@@ -50,7 +42,7 @@ public class UserPrizeRecordTest {
 	@Test
 	public void load(){
 		UserPrizeRecord record = userPrizeRecordService.load(2);
-		Resource resource = record.getPrize();
+		Prize resource = record.getPrize();
 		System.out.println(resource.getName());
 		System.out.println(resource.getPrice());
 		System.out.println(resource.getPrizeid());

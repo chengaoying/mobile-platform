@@ -1,5 +1,7 @@
 package cn.ohyeah.mobile.platform.dao;
 
+import java.util.List;
+
 import cn.ohyeah.mobile.platform.model.ActivityPrize;
 
 public interface IActivityPrizeDao {
@@ -28,4 +30,10 @@ public interface IActivityPrizeDao {
 	 * @param activityPrize
 	 */
 	public void update(ActivityPrize activityPrize);
+	
+	/**
+	 * 查询活动列表
+	 * @return
+	 */
+	public List<ActivityPrize> queryList();
 }

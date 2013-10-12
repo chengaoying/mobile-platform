@@ -7,17 +7,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import cn.ohyeah.mobile.platform.dao.IResourceDao;
-import cn.ohyeah.mobile.platform.model.Resource;
+import cn.ohyeah.mobile.platform.dao.IPrizeDao;
+import cn.ohyeah.mobile.platform.model.Prize;
 
-@Repository("resourceDao")
-public class ResourceDaoImpl extends BaseDaoImpl implements IResourceDao {
+@Repository("prizeDao")
+public class PrizeDaoImpl extends BaseDaoImpl implements IPrizeDao {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
 	
 	@Override
-	public void save(Resource resource) {
-		getSession().save(resource);
+	public void save(Prize prize) {
+		getSession().save(prize);
 		LOGGER.info("save user");
 	}
 
@@ -28,13 +28,13 @@ public class ResourceDaoImpl extends BaseDaoImpl implements IResourceDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Resource loadById(int id) {
-		String sql = "from Resource where prizeid=:prizeid";
+	public Prize loadById(int id) {
+		String sql = "from Prize where prizeid=:prizeid";
 		Query query = getSession().createQuery(sql);
 		query.setParameter("prizeid", id);
-		List<Resource> list = query.list();
+		List<Prize> list = query.list();
 		if(list.size() > 0){
-			Resource resource = (Resource)query.list().get(0);
+			Prize resource = (Prize)query.list().get(0);
 			return resource;
 		}
 		return null;
@@ -42,11 +42,11 @@ public class ResourceDaoImpl extends BaseDaoImpl implements IResourceDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Resource> loadByType(int type) {
-		String sql = "from Resource where type=:type";
+	public List<Prize> loadByType(int type) {
+		String sql = "from Prize where type=:type";
 		Query query = getSession().createQuery(sql);
 		query.setParameter("type", type);
-		List<Resource> list = query.list();
+		List<Prize> list = query.list();
 		return list;
 	}
 

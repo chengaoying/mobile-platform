@@ -16,9 +16,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  *
  */
 @Entity
-@Table(name="tb_resources")
+@Table(name="tb_prize")
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
-public class Resource {
+public class Prize {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -30,9 +30,6 @@ public class Resource {
 
 	@Column(name="name", nullable=false)
 	private String name;
-
-	@Column(name="type", nullable=false)
-	private int type;
 
 	@Column(name="location", nullable=false)
 	private String location;
@@ -81,14 +78,6 @@ public class Resource {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
 	}
 
 	public String getLocation() {

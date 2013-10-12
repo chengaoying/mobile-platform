@@ -6,12 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-
-<%
-	String base = request.getContextPath();
-%>
-
 <body>
-<a href="<%=base %>/prize/index">添加奖品</a>
+success
 </body>
 </html>

@@ -41,4 +41,13 @@ public class ActivityPrizeDaoImpl extends BaseDaoImpl implements IActivityPrizeD
 		getSession().update(activityPrize);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ActivityPrize> queryList() {
+		String sql = "from ActivityPrize";
+		Query query = getSession().createQuery(sql);
+		List<ActivityPrize> list = query.list();
+		return list;
+	}
+
 }

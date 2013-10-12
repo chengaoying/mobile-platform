@@ -9,52 +9,47 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.ohyeah.mobile.platform.model.Resource;
-import cn.ohyeah.mobile.platform.service.ResourceService;
+import cn.ohyeah.mobile.platform.model.Prize;
+import cn.ohyeah.mobile.platform.service.PrizeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"})
-public class ResourceServiceTest {
+public class PrizeServiceTest {
 
 	@Autowired
-	@Qualifier("resourceService")
-	private ResourceService resourceService;
+	@Qualifier("prizeService")
+	private PrizeService prizeService;
 	
-	public void setResourceService(ResourceService resourceService) {
-		this.resourceService = resourceService;
-	}
-
 	@Test
 	public void save(){
 		for(int i=0;i<10;i++){
-			Resource resource = new Resource();
+			Prize resource = new Prize();
 			resource.setProductid(1);
 			resource.setLocation("path");
-			resource.setName("resource_"+i);
-			resource.setType(i%2==0?0:1);
+			resource.setName("prize_"+i);
 			resource.setPrice(1000);
 			resource.setActivityid(1);
-			resourceService.save(resource);
+			prizeService.save(resource);
 		}
 	}
 	
 	@Test  
 	public void delete(){
 		int id = 1;
-		resourceService.delete(id);
+		prizeService.delete(id);
 	}
 	
 	@Test
 	public void load(){
 		int id = 1;
-		Resource resource = resourceService.loadById(id);
+		Prize resource = prizeService.loadById(id);
 		System.out.println(resource.getName());
 	}
 	
 	@Test
 	public void loadByType(){
 		int type = 0;
-		List<Resource> list = resourceService.loadByType(type);
+		List<Prize> list = prizeService.loadByType(type);
 		System.out.println(list.size());
 	}
 	

@@ -15,6 +15,38 @@
       timeToLiveSeconds="3600"
       overflowToDisk="false">
     </cache>
+    
+    <cache name="cn.ohyeah.mobile.platform.model.Prize"
+      maxElementsInMemory="2000"
+      eternal="false"
+      timeToIdleSeconds="3600"
+      timeToLiveSeconds="3600"
+      overflowToDisk="false">
+    </cache>
+    
+    <cache name="cn.ohyeah.mobile.platform.model.ActivityPrize"
+      maxElementsInMemory="2000"
+      eternal="false"
+      timeToIdleSeconds="3600"
+      timeToLiveSeconds="3600"
+      overflowToDisk="false">
+    </cache>
+    
+    <cache name="cn.ohyeah.mobile.platform.model.Product"
+      maxElementsInMemory="2000"
+      eternal="false"
+      timeToIdleSeconds="3600"
+      timeToLiveSeconds="3600"
+      overflowToDisk="false">
+    </cache>
+    
+    <cache name="cn.ohyeah.mobile.platform.model.UserPrizeRecord"
+      maxElementsInMemory="2000"
+      eternal="false"
+      timeToIdleSeconds="3600"
+      timeToLiveSeconds="3600"
+      overflowToDisk="false">
+    </cache>
 
 
     <cache

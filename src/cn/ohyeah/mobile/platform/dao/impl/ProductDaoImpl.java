@@ -45,4 +45,13 @@ public class ProductDaoImpl extends BaseDaoImpl implements IProductDao{
 		getSession().saveOrUpdate(product);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> queryList() {
+		String sql = "from Product";
+		Query query = getSession().createQuery(sql);
+		List<Product> list = query.list();
+		return list;
+	}
+
 }

@@ -41,7 +41,7 @@ public class ActivityPrize {
 	@OneToMany
 	@JoinColumn(name="activityid")
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private Set<Resource> prizes = new HashSet<Resource>();
+	private Set<Prize> prizes = new HashSet<Prize>();
 	
 	public int getActivityid() {
 		return activityid;
@@ -61,10 +61,10 @@ public class ActivityPrize {
 	public void setEndtime(java.util.Date endtime) {
 		this.endtime = endtime;
 	}
-	public Set<Resource> getPrizes() {
+	public Set<Prize> getPrizes() {
 		return prizes;
 	}
-	public void setPrizes(Set<Resource> prizes) {
+	public void setPrizes(Set<Prize> prizes) {
 		this.prizes = prizes;
 	}
 	

@@ -17,31 +17,22 @@ import cn.ohyeah.mobile.bussness.model.ReturnInfo;
 import cn.ohyeah.mobile.bussness.model.UserInfo;
 import cn.ohyeah.mobile.bussness.service.IUserService;
 import cn.ohyeah.mobile.global.CodeList;
-import cn.ohyeah.mobile.global.Constant;
 import cn.ohyeah.mobile.global.RequestContext;
 import cn.ohyeah.mobile.platform.model.User;
 import cn.ohyeah.mobile.platform.service.UserService;
 
 @Controller("userController")
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController extends AbstractController{
 	
-	private UserService userService;
-	private IUserService service360;
-
 	@Autowired
 	@Qualifier("userService")
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+	private UserService userService;
 	
 	@Autowired
 	@Qualifier("service360")
-	public void setService360(IUserService service360){
-		this.service360 = service360;
-	}
-	
-	 
+	private IUserService service360;
+
 	@RequestMapping(value = "/register")
 	public ModelAndView register(@RequestParam("name")String name, @RequestParam("password")String password){
 		RequestContext rc = RequestContext.get();
@@ -162,20 +153,8 @@ public class UserController {
 		return mv;
 	}
 	
-	/**
-	 * json or xml view
-	 * @param rc
-	 * @return
-	 */
-	private ModelAndView getView(RequestContext rc){
-		String dataType = String.valueOf(rc.getRequest().getParameter("dataType"));
-		ModelAndView mv = null;
-		if(dataType.equals(Constant.JSON)){
-			mv = new ModelAndView(Constant.VIEW_JSON);
-		}else{
-			mv = new ModelAndView(Constant.VIEW_XML);
-		}
-		return mv;
+	@RequestMapping(value = "/save")
+	public String save(){
+		return "user/save";
 	}
-	
 }

@@ -1,5 +1,7 @@
 package cn.ohyeah.mobile.platform.service.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +33,37 @@ public class UserServiceTest {
 			userService.save(user);
 		}
 	}
+	
+	@Test
+	public void load(){
+		User user = userService.loadUserByName("test_0");
+		System.out.println("name:"+user.getName());
+	}
+	
+	@Test
+	public void delete(){
+		userService.delete("test_3");
+	}
+	
+	@Test
+	public void update(){
+		User user = userService.loadUserByName("test_1");
+		user.setName("test_1_update");
+		userService.update(user);
+	}
+	
+	@Test
+	public void queryList(){
+		List<User> list = userService.queryList();
+		System.out.println(list.size());
+		for(int i=0;i<list.size();i++){
+			User user = list.get(i);
+			System.out.println("user name==>"+user.getName());
+		}
+	}
+	
+	
+	
+	
+	
 }

@@ -27,8 +27,8 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id", nullable=false)
-	private int id;
+	@Column(name="userid", nullable=false)
+	private int userid;
 	
 	@Column(name="accountid", nullable=false)
 	private int accountid;
@@ -72,12 +72,12 @@ public class User {
 	@Column(name="avatar")
 	private String avatar;
 
-	public int getId() {
-		return id;
+	public int getUserid() {
+		return userid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 	public int getAccountid() {

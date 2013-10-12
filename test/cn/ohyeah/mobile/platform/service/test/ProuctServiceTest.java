@@ -1,5 +1,7 @@
 package cn.ohyeah.mobile.platform.service.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,32 @@ public class ProuctServiceTest {
 		Product product = productService.load(productid);
 		System.out.println(product.getProductname());
 	}
+	
+	@Test
+	public void delete(){
+		productService.delete(1);
+	}
+	
+	@Test
+	public void queryList(){
+		List<Product> list = productService.queryList();
+		System.out.println("size:"+list.size());
+		for(Product product:list){
+			System.out.println("product name==>"+product.getProductname());
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

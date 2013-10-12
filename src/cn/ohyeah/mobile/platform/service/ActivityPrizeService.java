@@ -1,5 +1,7 @@
 package cn.ohyeah.mobile.platform.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,10 @@ public class ActivityPrizeService {
 	
 	public void update(ActivityPrize activityPrize){
 		activityPrizeDao.update(activityPrize);
+	}
+	
+	public List<ActivityPrize> queryList(){
+		return activityPrizeDao.queryList();
 	}
 	
 	public void setActivityPrizeDao(IActivityPrizeDao activityPrizeDao) {

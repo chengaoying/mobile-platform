@@ -43,13 +43,13 @@ public class UserPrizeRecord {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="prizeid",unique=true)
-	private Resource prize;
+	private Prize prize;
 
-	public Resource getPrize() {
+	public Prize getPrize() {
 		return prize;
 	}
 
-	public void setPrize(Resource prize) {
+	public void setPrize(Prize prize) {
 		this.prize = prize;
 	}
 

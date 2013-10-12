@@ -36,4 +36,33 @@ public class UserDaoImpl extends BaseDaoImpl  implements IUserDao {
 		return null;
 	}
 
+
+	@Override
+	public void delete(int userid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void delete(String name) {
+		getSession().delete(loadUserByName(name));
+	}
+
+
+	@Override
+	public void update(User user) {
+		getSession().update(user);
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> queryList() {
+		String sql = "from User";
+		Query query = getSession().createQuery(sql);
+		List<User> list = query.list();
+		return list;
+	}
+
 }

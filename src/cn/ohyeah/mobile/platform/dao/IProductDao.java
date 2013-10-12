@@ -1,5 +1,7 @@
 package cn.ohyeah.mobile.platform.dao;
 
+import java.util.List;
+
 import cn.ohyeah.mobile.platform.model.Product;
 
 public interface IProductDao {
@@ -28,4 +30,10 @@ public interface IProductDao {
 	 * @param product
 	 */
 	public void saveOrUpdate(Product product);
+	
+	/**
+	 * 查询游戏产品列表
+	 * @return
+	 */
+	public List<Product> queryList();
 }
