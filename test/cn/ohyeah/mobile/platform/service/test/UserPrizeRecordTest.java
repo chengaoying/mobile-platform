@@ -1,4 +1,6 @@
-package cn.ohyeah.mobile.test;
+package cn.ohyeah.mobile.platform.service.test;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,22 +35,39 @@ public class UserPrizeRecordTest {
 	}
 	
 	@Test
-	public void test(){
-		Resource resource = resourceService.loadById(1);
-		UserPrizeRecord record = new UserPrizeRecord();
-		record.setPrize(resource);
-		record.setUserid(1);
-		record.setTime(new java.util.Date());
-		userPrizeRecordService.save(record);
+	public void save(){
+		for(int i=0;i<10;i++){
+			Resource resource = resourceService.loadById(1+i);
+			UserPrizeRecord record = new UserPrizeRecord();
+			record.setPrize(resource);
+			record.setUserid(1);
+			record.setTime(new java.util.Date());
+			userPrizeRecordService.save(record);
+		}
 		
 	}
 	
 	@Test
-	public void test2(){
-		UserPrizeRecord record = userPrizeRecordService.load(1);
+	public void load(){
+		UserPrizeRecord record = userPrizeRecordService.load(2);
 		Resource resource = record.getPrize();
 		System.out.println(resource.getName());
 		System.out.println(resource.getPrice());
 		System.out.println(resource.getPrizeid());
 	}
+	
+	@Test
+	public void delete(){
+		int id = 1;
+		userPrizeRecordService.delete(id); 
+	}
+	
+	@Test
+	public void loadList(){
+		int userid = 1;
+		List<UserPrizeRecord> list = userPrizeRecordService.loadRecordList(userid);
+		System.out.println(list.size());
+	}
+	
+	
 }

@@ -39,6 +39,17 @@ public class Resource {
 	
 	@Column(name="price", nullable=false)
 	private int price;
+	
+	@Column(name="activityid", nullable=false)
+	private int activityid;
+
+	public int getActivityid() {
+		return activityid;
+	}
+
+	public void setActivityid(int activityid) {
+		this.activityid = activityid;
+	}
 
 	public int getPrice() {
 		return price;
