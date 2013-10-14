@@ -26,9 +26,16 @@ public interface IPrizeDao {
 	public Prize loadById(int id);
 	
 	/**
-	 * 通过资源类型，加载某一类资源
+	 * 通过资源名加载一个资源
+	 * @param name
+	 * @return
+	 */
+	public Prize loadByName(String name);
+	
+	/**
+	 * 加载某一活动下所有的奖品
 	 * @param type
 	 * @return
 	 */
-	public List<Prize> loadByType(int type);
+	public List<Prize> loadByActivityid(int activityid);
 }

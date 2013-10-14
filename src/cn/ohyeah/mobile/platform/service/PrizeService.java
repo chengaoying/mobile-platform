@@ -28,7 +28,11 @@ public class PrizeService {
 		return prizeDao.loadById(id);
 	}
 	
-	public List<Prize> loadByType(int type){
-		return prizeDao.loadByType(type);
+	public Prize loadByName(String name){
+		return prizeDao.loadByName(name);
+	}
+	
+	public List<Prize> loadByActivityid(int activityid){
+		return prizeDao.loadByActivityid(activityid);
 	}
 }

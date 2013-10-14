@@ -66,6 +66,35 @@ public class UserController extends AbstractController{
 	}
 	
 	/**
+	 * 通用登入地址
+	 * @param name
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping(value="/login_common")
+	public ModelAndView login_common(@RequestParam("name")String name, @RequestParam("password")String password){
+		RequestContext rc = RequestContext.get();
+		ModelAndView mv = getView(rc);
+		ReturnInfo<UserInfo> info = new ReturnInfo<UserInfo>();
+		List<UserInfo> list = new ArrayList<UserInfo>();
+		UserInfo ui = new UserInfo();
+		User u = userService.loadUserByName(name);
+		if(u==null){
+			info.setCode(CodeList.EC_USER_INVALID);
+			info.setMessage(CodeList.getErrorMessage(CodeList.EC_USER_INVALID));
+		}else if(!password.equals(u.getPassword())){
+			info.setCode(CodeList.EC_PASSWORD_ERROR);
+			info.setMessage(CodeList.getErrorMessage(CodeList.EC_PASSWORD_ERROR));
+		}else{
+			ui.setName(name);
+			list.add(ui);
+			info.setData(list);
+		}
+		mv.addObject(info);
+		return mv;
+	}
+	
+	/**
 	 * 360platform login
 	 * @param code
 	 * @param appKey

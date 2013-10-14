@@ -20,6 +20,13 @@ public interface IProductDao {
 	public Product load(int productid);
 	
 	/**
+	 * 加载一个产品对象通过产品名
+	 * @param name
+	 * @return
+	 */
+	public Product loadByName(String name);
+	
+	/**
 	 * 删除一个产品
 	 * @param productid
 	 */

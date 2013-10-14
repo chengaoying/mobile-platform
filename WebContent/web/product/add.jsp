@@ -13,36 +13,14 @@
 <script language="JavaScript">
 
 function checkreg(field) {
-	if(field.name.value==""){
-		window.alert("名称不能为空");
-		field.name.focus();		
+	if(field.productname.value==""){
+		window.alert("游戏名称不能为空");
+		field.productname.focus();		
 		return (false);
 	}
-	if(field.price.value==""){
-		window.alert("价格不能为空");
-		field.price.focus();		
-		return (false);
-	}else{
-		var reg=/^[0-9]*$/;
-		if(!reg.test(field.price.value)){
-			window.alert("价格必须为数字");
-			field.price.focus();		
-			return (false);
-		}
-	}
-	if(field.productid.value=="请选择奖品所属游戏"){
-		window.alert("请选择奖品所属游戏");
-		field.productid.focus();		
-		return (false);
-	}
-	if(field.activityid.value=="请选择奖品活动期数"){
-		window.alert("请选择奖品活动期数");
-		field.activityid.focus();		
-		return (false);
-	}
-	if(field.file.value==""){
-		window.alert("奖品图片不能为空");
-		field.file.focus();		
+	if(field.appname.value==""){
+		window.alert("应用程序名不能为空");
+		field.appname.focus();		
 		return (false);
 	}
 }
@@ -65,7 +43,7 @@ function validate(field) {
 		//创建Ajax核心对象XMLHttpRequest
 		createXMLHttpRequest();
 		
-		var url = "<%=base %>/prize/validate?name=" + trim(field.value);
+		var url = "<%=base %>/product/validate?productname=" + trim(field.value);
 		
 		//设置请求方式为GET，设置请求的URL，设置为异步提交
 		xmlHttp.open("GET", url, true);
@@ -89,7 +67,7 @@ function callback() {
 			if (trim(xmlHttp.responseText) != "") {
 				//alert(xmlHttp.responseText);
 				document.getElementById("spanUserId").innerHTML = "<font color='red'>" + xmlHttp.responseText + "</font>";
-				document.getElementById("name").focus();	
+				document.getElementById("productname").focus();	
 			}else {
 				document.getElementById("spanUserId").innerHTML = "";
 			}
@@ -101,23 +79,18 @@ function callback() {
 
 </script>
 <body>
-<h3>添加奖品</h3>
-<form id="form1" name="addPrize" action="<%=base %>/prize/add" method="post" enctype="multipart/form-data" onsubmit="return checkreg(this);">
-	奖品名称<font  style="color: red">(*)</font>：<input type="text" id="name" name="name" onblur="validate(this)"></input><span id="spanUserId"></span> <br>
-	奖品金额<font  style="color: red">(*)</font>：<input type="text" id="price"  name="price"></input> <br>
-	所属游戏<font  style="color: red">(*)</font>：<select id="productid"  name="productid">
-				<option selected="selected">请选择奖品所属游戏</option>
-				<c:forEach items="${products}" var="product">
-					<option value="${product.productid }">${product.productname }</option>
-				</c:forEach>
+<h3>添加游戏</h3>
+<form id="form1" name="addPrize" action="<%=base %>/product/add" method="post" onsubmit="return checkreg(this);">
+	游戏名称<font  style="color: red">(*)</font>：<input type="text" id="productname" name="productname" onblur="validate(this)"></input><span id="spanUserId"></span> <br>
+	应用程序名称<font  style="color: red">(*)</font>：<input type="text" id="appname"  name="appname"></input> <br>
+	游戏提供方<font  style="color: red">(*)</font>：<select id="provider"  name="provider">
+				<option selected="selected">欧耶</option>
 			  </select> <br>
-	活动期数<font  style="color: red">(*)</font>：<select id="activityid" name="activityid">
-				<option selected="selected">请选择奖品活动期数</option>
-				<c:forEach items="${activityPrizes}" var="activityPrize">
-					<option value="${activityPrize.activityid }">第${activityPrize.activityid }期</option>
-				</c:forEach>
+	游戏状态<font  style="color: red">(*)</font>：<select id="state"  name="state">
+				<option selected="selected" value="0">测试</option>
+				<option value="1">上线</option>
+				<option value="2">下线</option>
 			  </select> <br>
-	奖品图片<font  style="color: red">(*)</font>：<input type="file" id="file" name="file"></input> <br>
 	<!-- <input type="submit" value="提交" onclick="javascript:submit();"></input> -->
 	<%-- <a href="javascript:submit();"><img src="<%=base %>/image/submit.jpg" style="position: absolute;"></a> --%>
 	<input name="button" id="button" value="确认" type="submit">

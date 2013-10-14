@@ -1,5 +1,8 @@
 package cn.ohyeah.mobile.platform.service.test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
 
 import org.junit.Test;
@@ -47,10 +50,29 @@ public class PrizeServiceTest {
 	}
 	
 	@Test
-	public void loadByType(){
-		int type = 0;
-		List<Prize> list = prizeService.loadByType(type);
-		System.out.println(list.size());
+	public void loadByActivityid(){
+		int activityid = 1;
+		List<Prize> list = prizeService.loadByActivityid(activityid);
+		System.out.println("list size:"+list.size());
+		for (Prize prize : list) {
+			File file = new File(prize.getLocation());
+			System.out.println("文件大小：" + file.length());
+			try {
+				FileInputStream stream = new FileInputStream(file);
+				ByteArrayOutputStream out = new ByteArrayOutputStream(1024);
+				byte[] b = new byte[1024];
+				int n;
+				while ((n = stream.read(b)) != -1) {
+					out.write(b, 0, n);
+				}
+				stream.close();
+				out.close();
+				byte[] bytes = out.toByteArray();
+				System.out.println("读取之后的文件大小==》"+bytes.length);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void update(){}

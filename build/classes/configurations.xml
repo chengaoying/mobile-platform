@@ -16,8 +16,9 @@
 		</property>
 	</configuration>
 	
+	<!-- 上传文件存放路径 -->
 	<configuration id="resourcesPath">
-		<property name="prize"><![CDATA[/data/prize/]]></property>
-		<property name="favor"><![CDATA[/data/favor/]]></property>
+		<property name="prize"><![CDATA[F:/test/prize/]]></property>
+		<property name="favor"><![CDATA[F:/test/favor/]]></property>
 	</configuration>
 </configurations>

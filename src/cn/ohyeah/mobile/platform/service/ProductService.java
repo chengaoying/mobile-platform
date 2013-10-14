@@ -35,4 +35,8 @@ public class ProductService {
 	public List<Product> queryList(){
 		return productDao.queryList();
 	}
+	
+	public Product loadByName(String name){
+		return productDao.loadByName(name);
+	}
 }

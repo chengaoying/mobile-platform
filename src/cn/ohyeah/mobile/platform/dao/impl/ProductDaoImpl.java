@@ -54,4 +54,18 @@ public class ProductDaoImpl extends BaseDaoImpl implements IProductDao{
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Product loadByName(String name) {
+		String sql = "from Product where productname=:productname";
+		Query query = getSession().createQuery(sql);
+		query.setParameter("productname", name);
+		List<Product> list = query.list();
+		if(list.size() > 0){
+			Product product = (Product)query.list().get(0);
+			return product;
+		}
+		return null;
+	}
+
 }

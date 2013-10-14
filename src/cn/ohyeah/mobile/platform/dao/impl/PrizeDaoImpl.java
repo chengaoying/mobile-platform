@@ -42,12 +42,26 @@ public class PrizeDaoImpl extends BaseDaoImpl implements IPrizeDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Prize> loadByType(int type) {
-		String sql = "from Prize where type=:type";
+	public List<Prize> loadByActivityid(int activityid) {
+		String sql = "from Prize where activityid=:activityid";
 		Query query = getSession().createQuery(sql);
-		query.setParameter("type", type);
+		query.setParameter("activityid", activityid);
 		List<Prize> list = query.list();
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Prize loadByName(String name) {
+		String sql = "from Prize where name=:name";
+		Query query = getSession().createQuery(sql);
+		query.setParameter("name", name);
+		List<Prize> list = query.list();
+		if(list.size() > 0){
+			Prize resource = (Prize)query.list().get(0);
+			return resource;
+		}
+		return null;
 	}
 
 }
