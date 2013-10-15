@@ -1,5 +1,6 @@
 package cn.ohyeah.mobile.bussness.model;
 
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -14,7 +15,7 @@ public class PrizeInfo {
 	
 	private int activityid;
 	
-	private byte[] bytes;
+	private String location;
 
 	@XmlElement
 	public int getProductid() {
@@ -53,12 +54,12 @@ public class PrizeInfo {
 	}
 
 	@XmlElement
-	public byte[] getBytes() {
-		return bytes;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setBytes(byte[] bytes) {
-		this.bytes = bytes;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 }

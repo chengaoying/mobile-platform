@@ -63,7 +63,7 @@ public class RequestContext {
 		RequestContext rc = new RequestContext();
 		rc.request = req;   
 		rc.response = res;
-		rc.response.setCharacterEncoding("UTF_8");
+		rc.response.setCharacterEncoding("UTF-8");
 		rc.session = req.getSession(true);
 		rc.cookies = new HashMap<String, Cookie>();
 		Cookie[] cookies = req.getCookies();

@@ -41,7 +41,7 @@
     <!-- 拦截器配置开始  -->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/user/*"/>
+            <mvc:mapping path="/*/*"/>
             <bean class="cn.ohyeah.mobile.platform.intercept.GlobalIntercept">
             	<!-- <property name="indexUrl" value="/index"/> -->
             </bean>
@@ -58,6 +58,7 @@
 	                    <value>cn.ohyeah.mobile.bussness.model.ReturnInfo</value>
 	                    <value>cn.ohyeah.mobile.bussness.model.DataInfo</value>
 	                    <value>cn.ohyeah.mobile.bussness.model.UserInfo</value>
+	                    <value>cn.ohyeah.mobile.bussness.model.PrizeInfo</value>
 	                </array>
 	            </property>
 	        </bean>

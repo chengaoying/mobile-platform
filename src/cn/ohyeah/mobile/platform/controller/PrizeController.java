@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,7 +30,6 @@ import cn.ohyeah.mobile.platform.model.Prize;
 import cn.ohyeah.mobile.platform.service.ActivityPrizeService;
 import cn.ohyeah.mobile.platform.service.PrizeService;
 import cn.ohyeah.mobile.platform.service.ProductService;
-import cn.ohyeah.mobile.utils.FileUtils;
 import cn.ohyean.mobile.exception.BusinessException;
 
 
@@ -53,27 +51,30 @@ public class PrizeController extends AbstractController {
 	@Qualifier("activityPrizeService")
 	private ActivityPrizeService activityPrizeService;
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/*@SuppressWarnings({ "unchecked", "rawtypes" })
 	@ModelAttribute
 	public void list(Map model){
 		model.put("products", productService.queryList());
 		model.put("activityPrizes", activityPrizeService.queryList());
-	}
+	}*/
 	
 	@RequestMapping("/index")
-	public String index(){
+	public String index(HttpServletRequest request){
+		request.setAttribute("products", productService.queryList());
+		request.setAttribute("activityPrizes", activityPrizeService.queryList());
 		return "prize/add";
 	}
 	
 	@RequestMapping(value="/add",method = RequestMethod.POST)
-	public String add(@RequestParam("file") CommonsMultipartFile file, @ModelAttribute("prize")Prize prize, HttpServletRequest request){
+	public String add(@RequestParam("file") CommonsMultipartFile file, @ModelAttribute("prize")Prize prize, 
+			 HttpServletRequest request){
 		if(!file.isEmpty()){
 			prize.setLocation(Configurations.getProperty("resourcesPath", "prize")+file.getOriginalFilename());
 			//String path = request.getSession().getServletContext().getRealPath(Configurations.getProperty("resourcesPath", "prize"));
 			String path = Configurations.getProperty("resourcesPath", "prize");
-			log.debug("文件输出路径："+path+"\\"+file.getOriginalFilename());
+			log.debug("文件输出路径："+path + file.getOriginalFilename());
 			try {
-				FileCopyUtils.copy(file.getBytes(), new File(path+"\\"+file.getOriginalFilename()));
+				FileCopyUtils.copy(file.getBytes(), new File(path + file.getOriginalFilename()));
 			} catch (FileNotFoundException e) {
 				log.error("未找到文件，原因："+e);
 				throw new BusinessException(e);
@@ -99,12 +100,14 @@ public class PrizeController extends AbstractController {
 		return;
 	}
 	
+	@RequestMapping("/loadPrizes")
 	public ModelAndView loadPrizes(@RequestParam("activityid")int activityid){
 		RequestContext rc = RequestContext.get();
 		ModelAndView mv = getView(rc);
+		List<Prize> prizes = prizeService.loadByActivityid(activityid);
+		
 		ReturnInfo<PrizeInfo> info = new ReturnInfo<PrizeInfo>();
 		List<PrizeInfo> list = new ArrayList<PrizeInfo>();
-		List<Prize> prizes = prizeService.loadByActivityid(activityid);
 		if(prizes != null && prizes.size() > 0){
 			for(Prize prize:prizes){
 				PrizeInfo pi = new PrizeInfo();
@@ -112,7 +115,7 @@ public class PrizeController extends AbstractController {
 				pi.setName(prize.getName());
 				pi.setPrice(prize.getPrice());
 				pi.setProductid(prize.getProductid());
-				pi.setBytes(FileUtils.FileToByteArray(new File(prize.getLocation())));
+				pi.setLocation(prize.getLocation());
 				list.add(pi);
 			}
 			info.setCode(CodeList.SUCCESS);

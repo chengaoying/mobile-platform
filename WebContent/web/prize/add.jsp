@@ -103,21 +103,21 @@ function callback() {
 <body>
 <h3>添加奖品</h3>
 <form id="form1" name="addPrize" action="<%=base %>/prize/add" method="post" enctype="multipart/form-data" onsubmit="return checkreg(this);">
-	奖品名称<font  style="color: red">(*)</font>：<input type="text" id="name" name="name" onblur="validate(this)"></input><span id="spanUserId"></span> <br>
-	奖品金额<font  style="color: red">(*)</font>：<input type="text" id="price"  name="price"></input> <br>
-	所属游戏<font  style="color: red">(*)</font>：<select id="productid"  name="productid">
+	奖品名称<font  style="color: red">*</font>：<input type="text" id="name" name="name" onblur="validate(this)"></input><span id="spanUserId"></span> <br>
+	奖品金额<font  style="color: red">*</font>：<input type="text" id="price"  name="price"></input> <br>
+	所属游戏<font  style="color: red">*</font>：<select id="productid"  name="productid">
 				<option selected="selected">请选择奖品所属游戏</option>
 				<c:forEach items="${products}" var="product">
 					<option value="${product.productid }">${product.productname }</option>
 				</c:forEach>
 			  </select> <br>
-	活动期数<font  style="color: red">(*)</font>：<select id="activityid" name="activityid">
+	活动期数<font  style="color: red">*</font>：<select id="activityid" name="activityid">
 				<option selected="selected">请选择奖品活动期数</option>
 				<c:forEach items="${activityPrizes}" var="activityPrize">
 					<option value="${activityPrize.activityid }">第${activityPrize.activityid }期</option>
 				</c:forEach>
 			  </select> <br>
-	奖品图片<font  style="color: red">(*)</font>：<input type="file" id="file" name="file"></input> <br>
+	奖品图片<font  style="color: red">*</font>：<input type="file" id="file" name="file"></input> <br>
 	<!-- <input type="submit" value="提交" onclick="javascript:submit();"></input> -->
 	<%-- <a href="javascript:submit();"><img src="<%=base %>/image/submit.jpg" style="position: absolute;"></a> --%>
 	<input name="button" id="button" value="确认" type="submit">

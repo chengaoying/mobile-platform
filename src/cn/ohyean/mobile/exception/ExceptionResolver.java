@@ -20,7 +20,7 @@ import cn.ohyeah.mobile.utils.StringPrintWriter;
  */
 public class ExceptionResolver implements HandlerExceptionResolver{
 	
-	private Log log = LogFactory.getLog(ExceptionResolver.class);
+	private static final Log log = LogFactory.getLog(ExceptionResolver.class);
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
