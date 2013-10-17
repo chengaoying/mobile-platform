@@ -10,13 +10,24 @@
 <%
 	String base = request.getContextPath();
 %>
+<script src="<%=base %>/js/client_validate.js"></script>
+<script language="JavaScript">
+
+function checkreg(field) {
+	if(field.productid.value==""){
+		window.alert("没有可下载的游戏包");
+		field.productid.focus();		
+		return (false);
+	}
+}
+</script>
 <body>
 	<a href="<%=base%>/product/add">添加游戏</a>
 	<br>
 	<a href="<%=base%>/prize/index">添加奖品</a>
 	<br><br>
 
-	<form action="<%=base%>/product/download" method="post">
+	<form action="<%=base%>/product/download" method="post" onsubmit="return checkreg(this);">
 		<select id="productid" name="productid">
 			<c:forEach items="${products}" var="product">
 				<option value="${product.productid }">${product.productname}</option>
