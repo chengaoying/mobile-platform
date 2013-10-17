@@ -18,9 +18,9 @@ function checkreg(field) {
 		field.productname.focus();		
 		return (false);
 	}
-	if(field.appname.value==""){
-		window.alert("应用程序名不能为空");
-		field.appname.focus();		
+	if(field.file.value==""){
+		window.alert("请添加游戏包");
+		field.file.focus();		
 		return (false);
 	}
 }
@@ -80,19 +80,19 @@ function callback() {
 </script>
 <body>
 <h3>添加游戏</h3>
-<form id="form1" name="addPrize" action="<%=base %>/product/add" method="post" onsubmit="return checkreg(this);">
-	游戏名称<font  style="color: red">(*)</font>：<input type="text" id="productname" name="productname" onblur="validate(this)"></input><span id="spanUserId"></span> <br>
-	应用程序名称<font  style="color: red">(*)</font>：<input type="text" id="appname"  name="appname"></input> <br>
-	游戏提供方<font  style="color: red">(*)</font>：<select id="provider"  name="provider">
+<form id="form1" name="addProduct" action="<%=base %>/product/add" enctype="multipart/form-data" method="post" onsubmit="return checkreg(this);">
+	游戏名称<font  style="color: red">*</font>：<input type="text" id="productname" name="productname" onblur="validate(this)"></input><span id="spanUserId"></span> <br>
+	游戏提供方<font  style="color: red">*</font>：<select id="provider"  name="provider">
 				<option selected="selected">欧耶</option>
 			  </select> <br>
-	游戏状态<font  style="color: red">(*)</font>：<select id="state"  name="state">
+	游戏状态<font  style="color: red">*</font>：<select id="state"  name="state">
 				<option selected="selected" value="0">测试</option>
 				<option value="1">上线</option>
 				<option value="2">下线</option>
 			  </select> <br>
 	<!-- <input type="submit" value="提交" onclick="javascript:submit();"></input> -->
 	<%-- <a href="javascript:submit();"><img src="<%=base %>/image/submit.jpg" style="position: absolute;"></a> --%>
+	游戏包<font  style="color: red">*</font>：<input type="file" id="file" name="file"></input> <br>
 	<input name="button" id="button" value="确认" type="submit">
 </form>
 

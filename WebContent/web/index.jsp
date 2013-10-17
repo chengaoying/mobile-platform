@@ -12,7 +12,6 @@
 %>
 
 <body>
-<a href="<%=base %>/product/index">添加游戏</a><br>
-<a href="<%=base %>/prize/index">添加奖品</a>
+<a href="<%=base %>/product/index">游戏首页</a><br>
 </body>
 </html>

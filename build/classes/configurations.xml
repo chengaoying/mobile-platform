@@ -20,5 +20,6 @@
 	<configuration id="resourcesPath">
 		<property name="prize"><![CDATA[F:/test/prize/]]></property>
 		<property name="favor"><![CDATA[F:/test/favor/]]></property>
+		<property name="product"><![CDATA[F:/test/product/]]></property>
 	</configuration>
 </configurations>

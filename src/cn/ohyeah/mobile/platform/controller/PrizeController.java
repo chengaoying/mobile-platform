@@ -66,8 +66,7 @@ public class PrizeController extends AbstractController {
 	}
 	
 	@RequestMapping(value="/add",method = RequestMethod.POST)
-	public String add(@RequestParam("file") CommonsMultipartFile file, @ModelAttribute("prize")Prize prize, 
-			 HttpServletRequest request){
+	public String add(@RequestParam("file") CommonsMultipartFile file, @ModelAttribute("prize")Prize prize/*, HttpServletRequest request*/){
 		if(!file.isEmpty()){
 			prize.setLocation(Configurations.getProperty("resourcesPath", "prize")+file.getOriginalFilename());
 			//String path = request.getSession().getServletContext().getRealPath(Configurations.getProperty("resourcesPath", "prize"));
@@ -85,7 +84,7 @@ public class PrizeController extends AbstractController {
 			prizeService.save(prize);
 			return "prize/success";
 		}else{  
-			return "prize/error";
+			return "error";
 		}
 	}
 	
