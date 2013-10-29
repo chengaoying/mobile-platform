@@ -11,7 +11,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * 资源实体类（包括奖品、收藏等资源）
+ * 奖品类
  * @author Administrator
  *
  */

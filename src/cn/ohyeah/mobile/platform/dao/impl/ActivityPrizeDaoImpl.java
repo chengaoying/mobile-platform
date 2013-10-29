@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import cn.ohyeah.mobile.platform.dao.IActivityPrizeDao;
 import cn.ohyeah.mobile.platform.model.ActivityPrize;
-import cn.ohyeah.mobile.platform.model.UserPrizeRecord;
 
 @Repository("activityPrizeDao")
 public class ActivityPrizeDaoImpl extends BaseDaoImpl implements IActivityPrizeDao{
@@ -23,7 +22,7 @@ public class ActivityPrizeDaoImpl extends BaseDaoImpl implements IActivityPrizeD
 		String sql = "from ActivityPrize where id=:id";
 		Query query = getSession().createQuery(sql);
 		query.setParameter("id", id); 
-		List<UserPrizeRecord> list = query.list();
+		List<ActivityPrize> list = query.list();
 		if(list.size() > 0){
 			ActivityPrize record = (ActivityPrize)query.list().get(0);
 			return record;

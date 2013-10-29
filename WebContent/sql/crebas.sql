@@ -18,6 +18,8 @@ drop table if exists tb_user_prize_record;
 
 drop table if exists tb_user_product;
 
+drop table if exists tb_game_record;
+
 /*==============================================================*/
 /* Table: tb_activity_prize                                     */
 /*==============================================================*/
@@ -121,4 +123,12 @@ create table tb_user_product
    primary key (id)
 );
 
-
+create table tb_game_record
+(
+	id					int not null auto_increment,
+	recordindex			int not null,
+	productid			int not null,
+	time				datetime,
+	data				varchar(1000),
+	primary key (id)
+)
