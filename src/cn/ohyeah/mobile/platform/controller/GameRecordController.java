@@ -35,6 +35,7 @@ public class GameRecordController extends AbstractController{
 		gameRecord.setProductid(1/*productid*/);
 		gameRecord.setRecordindex(recordindex);
 		gameRecord.setData(data);
+		gameRecord.setTime(new java.util.Date());
 		
 		ReturnInfo<RecordInfo> info = new ReturnInfo<RecordInfo>();
 		gameRecordService.save(gameRecord);
