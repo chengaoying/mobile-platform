@@ -1,4 +1,4 @@
-package cn.ohyean.mobile.exception;
+package cn.ohyeah.mobile.exception;
 
 import java.util.HashMap;
 import java.util.Map;

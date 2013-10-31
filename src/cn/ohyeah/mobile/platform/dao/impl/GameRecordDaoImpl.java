@@ -12,7 +12,14 @@ public class GameRecordDaoImpl  extends BaseDaoImpl implements IGameRecordDao{
 
 	@Override
 	public void save(GameRecord gamerecord) {
-		getSession().save(gamerecord);
+		GameRecord gr = loadByRecordindex(gamerecord.getRecordindex());
+		if(gr != null){
+			gr.setData(gamerecord.getData());
+			gr.setTime(gamerecord.getTime());
+			getSession().update(gr);
+		}else{
+			getSession().save(gamerecord);
+		}
 	}
 
 	@SuppressWarnings("unchecked")

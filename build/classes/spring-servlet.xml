@@ -96,6 +96,6 @@
         </property>
     </bean> -->
     
-    <bean id="exceptionResolver" class="cn.ohyean.mobile.exception.ExceptionResolver"/>
+    <bean id="exceptionResolver" class="cn.ohyeah.mobile.exception.ExceptionResolver"/>
     
 </beans>

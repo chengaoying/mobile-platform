@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.ohyeah.mobile.bussness.model.PrizeInfo;
 import cn.ohyeah.mobile.bussness.model.ReturnInfo;
+import cn.ohyeah.mobile.exception.BusinessException;
 import cn.ohyeah.mobile.global.CodeList;
 import cn.ohyeah.mobile.global.Configurations;
 import cn.ohyeah.mobile.global.RequestContext;
@@ -30,7 +31,6 @@ import cn.ohyeah.mobile.platform.model.Prize;
 import cn.ohyeah.mobile.platform.service.ActivityPrizeService;
 import cn.ohyeah.mobile.platform.service.PrizeService;
 import cn.ohyeah.mobile.platform.service.ProductService;
-import cn.ohyean.mobile.exception.BusinessException;
 
 
 @Controller("prizeController")

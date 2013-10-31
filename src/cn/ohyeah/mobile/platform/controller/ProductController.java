@@ -25,10 +25,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import cn.ohyeah.mobile.exception.BusinessException;
 import cn.ohyeah.mobile.global.Configurations;
 import cn.ohyeah.mobile.platform.model.Product;
 import cn.ohyeah.mobile.platform.service.ProductService;
-import cn.ohyean.mobile.exception.BusinessException;
 
 @Controller
 @RequestMapping("/product")

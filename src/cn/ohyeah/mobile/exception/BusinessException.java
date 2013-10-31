@@ -1,4 +1,4 @@
-package cn.ohyean.mobile.exception;
+package cn.ohyeah.mobile.exception;
 
 public class BusinessException extends RuntimeException {
 
