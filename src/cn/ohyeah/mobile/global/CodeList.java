@@ -10,12 +10,13 @@ public class CodeList {
 	
 	public static final int EC_PRIZE_NOT_EXIST = -1005;				//奖品不存在
 	public static final int EC_RECORD_NOT_EXIST = -1006;			//游戏记录不存在
+	public static final int EC_USER_PRIZE_RECORD_NOT_EXIST = 1007;	//用户没有中奖记录
 	
 	public static final int EC_360_ERROR = -2001;					//360获取Token接口异常
 	
 	
 	public static String getErrorMessage(int errorCode){
-		switch (errorCode){
+		switch (errorCode) {
 		case 0:
 			return "success";
 		case -1001:
@@ -30,9 +31,12 @@ public class CodeList {
 			return "奖品不存在";
 		case -1006:
 			return "游戏记录不存在";
+		case -1007:
+			return "用户没有中奖记录";
 		case -2001:
 			return "360获取Token接口异常";
-		default: return "未知错误";
+		default:
+			return "未知错误";
 		}
 	}
 

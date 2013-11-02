@@ -59,6 +59,7 @@
 	                    <value>cn.ohyeah.mobile.bussness.model.DataInfo</value>
 	                    <value>cn.ohyeah.mobile.bussness.model.UserInfo</value>
 	                    <value>cn.ohyeah.mobile.bussness.model.PrizeInfo</value>
+	                    <value>cn.ohyeah.mobile.bussness.model.UserPrizeInfo</value>
 	                </array>
 	            </property>
 	        </bean>
