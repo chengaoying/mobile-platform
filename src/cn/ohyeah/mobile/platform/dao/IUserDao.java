@@ -19,6 +19,13 @@ public interface IUserDao {
 	public User loadUserByName(String name);
 	
 	/**
+	 * 通过userid加载一个用户信息
+	 * @param userid
+	 * @return
+	 */
+	public User loadUserById(int userid);
+	
+	/**
 	 * 通过userid删除一个用户
 	 * @param userid
 	 */

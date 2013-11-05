@@ -65,4 +65,19 @@ public class UserDaoImpl extends BaseDaoImpl  implements IUserDao {
 		return list;
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public User loadUserById(int userid) {
+		String sql = "from User where userid=:userid";
+		Query query = getSession().createQuery(sql);
+		query.setParameter("userid", userid);
+		List<User> list = query.list();
+		if(list.size() > 0){
+			User user = (User)query.list().get(0);
+			return user;
+		}
+		return null;
+	}
+
 }

@@ -126,4 +126,30 @@ public class PrizeController extends AbstractController {
 		mv.addObject(info);
 		return mv;
 	}
+	
+	@RequestMapping("/load")
+	public ModelAndView loadPrizeById(@RequestParam("prizeid")int prizeid){
+		RequestContext rc = RequestContext.get();
+		ModelAndView mv = getView(rc);
+		Prize prize = prizeService.loadById(prizeid);
+		
+		ReturnInfo<PrizeInfo> info = new ReturnInfo<PrizeInfo>();
+		List<PrizeInfo> list = new ArrayList<PrizeInfo>();
+		if(prize != null){
+			PrizeInfo pi = new PrizeInfo();
+			pi.setActivityid(prize.getActivityid());
+			pi.setName(prize.getName());
+			pi.setPrice(prize.getPrice());
+			pi.setProductid(prize.getProductid());
+			pi.setLocation(prize.getLocation());
+			list.add(pi);
+			info.setCode(CodeList.SUCCESS);
+			info.setData(list);
+		}else{
+			info.setCode(CodeList.EC_PRIZE_NOT_EXIST);
+			info.setMessage(CodeList.getErrorMessage(CodeList.EC_PRIZE_NOT_EXIST));
+		}
+		mv.addObject(info);
+		return mv;
+	}
 }

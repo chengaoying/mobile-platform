@@ -52,6 +52,7 @@ public class UserPrizeRecordController extends AbstractController{
 		return mv;
 	}
 	
+	@RequestMapping("/load")
 	public ModelAndView load(@RequestParam("userid")int userid){
 		RequestContext rc = RequestContext.get();
 		ModelAndView mv = getView(rc);

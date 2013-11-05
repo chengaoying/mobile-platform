@@ -182,6 +182,30 @@ public class UserController extends AbstractController{
 		return mv;
 	}
 	
+	@RequestMapping("/load")
+	public ModelAndView load(@RequestParam("userid")int userid){
+		RequestContext rc = RequestContext.get();
+		ModelAndView mv = getView(rc);
+		User u = userService.loadUserById(userid);
+		
+		ReturnInfo<DataInfo> info = new ReturnInfo<DataInfo>();
+		List<DataInfo> list = new ArrayList<DataInfo>();
+		DataInfo di = new DataInfo();
+		if(u != null){
+			info.setCode(CodeList.SUCCESS);
+			info.setMessage(CodeList.getErrorMessage(CodeList.SUCCESS));
+			di.setId(u.getAccountid());
+			di.setName(u.getName());
+			list.add(di);
+			info.setData(list);
+		}else{
+			info.setCode(CodeList.EC_USER_INVALID);
+			info.setMessage(CodeList.getErrorMessage(CodeList.EC_USER_INVALID));
+		}
+		mv.addObject(info);
+		return mv;
+	}
+	
 	@RequestMapping(value = "/save")
 	public String save(){
 		return "user/save";

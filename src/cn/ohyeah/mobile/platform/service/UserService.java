@@ -44,13 +44,8 @@ public class UserService {
 		return userDao.queryList();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	public User loadUserById(int userid){
+		return userDao.loadUserById(userid);
+	}
 	
 }
