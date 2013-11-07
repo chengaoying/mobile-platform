@@ -39,6 +39,7 @@ public class UserPrizeRecordController extends AbstractController{
 		Prize prize = prizeService.loadById(prizeid);
 		UserPrizeRecord record = new UserPrizeRecord();
 		record.setUserid(userid);
+		record.setPrizeid(prizeid);
 		record.setPrize(prize);
 		record.setTime(new java.util.Date());
 		userPrizeRecordService.save(record);
