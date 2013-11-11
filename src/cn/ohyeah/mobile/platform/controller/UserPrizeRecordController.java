@@ -61,9 +61,9 @@ public class UserPrizeRecordController extends AbstractController{
 		
 		ReturnInfo<UserPrizeInfo> info = new ReturnInfo<UserPrizeInfo>();
 		List<UserPrizeInfo> list = new ArrayList<UserPrizeInfo>();
-		UserPrizeInfo pi = new UserPrizeInfo();
 		if(prizes.size() > 0){
 			for(UserPrizeRecord record:prizes){
+				UserPrizeInfo pi = new UserPrizeInfo();
 				pi.setId(record.getId());
 				pi.setPrizeid(record.getPrizeid());
 				pi.setPrize(record.getPrize());
