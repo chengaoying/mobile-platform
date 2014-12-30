@@ -12,6 +12,7 @@
 %>
 
 <body>
+<%-- <a href="<%=base %>/test/index.jsp">j2me测试入口</a><br> --%>
 <a href="<%=base %>/product/index">游戏首页</a><br>
 </body>
 </html>

@@ -1,0 +1,15 @@
+Account_Id: 10000
+Is_Debug: N
+Is_Offline: Y
+MIDlet-1: Plumber,,cn.ohyeah.itvgame.plumber.PlumberMidlet
+MIDlet-Jar-Size: 1595703
+MIDlet-Jar-URL: demo.jar
+MIDlet-Name: Plumber_IPTV MIDlet Suite
+MIDlet-Vendor: OhYeah
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.0
+MicroEdition-Profile: MIDP-2.0
+Product_Id: 1
+Service_Location: http://localhost:8080/9city/servlet/GameServlet
+Try_Play_Score: 40000
+Try_Play_Time: 30

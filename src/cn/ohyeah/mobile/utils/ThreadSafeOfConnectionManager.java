@@ -17,6 +17,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -65,6 +66,13 @@ public class ThreadSafeOfConnectionManager implements Runnable{
 		pccm.setDefaultMaxPerRoute(MAXPERROUTE);	
 		pccm.setMaxTotal(MAXTOTAL);	
 		new Thread(instance).start();
+	}
+	
+	public static DefaultHttpClient buildDefaultHttpClient(){
+		Scheme scheme = new Scheme("http", 80, PlainSocketFactory.getSocketFactory());
+		pccm.getSchemeRegistry().register(scheme);
+		client = new DefaultHttpClient(pccm); 
+		return client;
 	}
 	
 	/**

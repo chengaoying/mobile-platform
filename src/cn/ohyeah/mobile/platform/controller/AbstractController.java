@@ -15,10 +15,10 @@ public class AbstractController {
 	protected ModelAndView getView(RequestContext rc){
 		String dataType = String.valueOf(rc.getRequest().getParameter("dataType"));
 		ModelAndView mv = null;
-		if(dataType.equals(Constant.JSON)){
-			mv = new ModelAndView(Constant.VIEW_JSON);
-		}else{
+		if(dataType.equals(Constant.XML)){
 			mv = new ModelAndView(Constant.VIEW_XML);
+		}else{
+			mv = new ModelAndView(Constant.VIEW_JSON);
 		}
 		return mv;
 	}

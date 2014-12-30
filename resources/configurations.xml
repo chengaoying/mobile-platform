@@ -18,8 +18,15 @@
 	
 	<!-- 上传文件存放路径 -->
 	<configuration id="resourcesPath">
-		<property name="prize"><![CDATA[E:/test/prize/]]></property>
-		<property name="favor"><![CDATA[E:/test/favor/]]></property>
-		<property name="product"><![CDATA[E:/test/product/]]></property>
+		<property name="prize"><![CDATA[E:/test/upfiles/prize/]]></property>
+		<property name="favor"><![CDATA[E:/test/upfiles/favor/]]></property>
+		<property name="product"><![CDATA[E:/test/upfiles/product/]]></property>
 	</configuration>
+	
+	<configuration id="sms">
+		<property name="url"><![CDATA[http://218.5.76.147:8081/magicSMS2/getSmsContent]]></property>
+		<property name="appid">10000091</property>
+		<property name="price">200</property>
+	</configuration>
+	
 </configurations>

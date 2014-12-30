@@ -8,7 +8,6 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/antlr-3.3-complete.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/aopalliance-1.0.jar"/>
@@ -72,13 +71,14 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-oxm-3.1.1.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/xml-apis-1.0.b2.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.2.5.jar" sourcepath="D:/repository/maven/org/apache/httpcomponents/httpclient/4.2.5/httpclient-4.2.5-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.2.5.jar" sourcepath="D:/repository/maven/org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpmime-4.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.0.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.0.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.0.4.jar" sourcepath="D:/repository/maven/com/fasterxml/jackson/core/jackson-databind/2.0.4/jackson-databind-2.0.4-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/json-lib-2.3-jdk15-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/netty-all-4.0.8.Final.jar" sourcepath="F:/java lib/netty-4.0.8.Final/netty-4.0.8.Final/jar/all-in-one/netty-all-4.0.8.Final-sources.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpmime-4.2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
