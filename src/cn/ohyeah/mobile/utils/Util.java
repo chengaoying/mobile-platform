@@ -23,5 +23,8 @@ public class Util {
     } 
     
     
+    public static void main(String[] args){
+    	System.out.println(Util.decodeByBase64("MF400d2ba731604fefbbe25f70cb698d00b30a1242dbe549f2a04f53e134ea80f1dc375e3b7fd24a4b91bf3e6229a307bf"));
+    }
     
 }

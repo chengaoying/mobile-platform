@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.NameValuePair;
@@ -25,7 +23,7 @@ import cn.ohyeah.mobile.global.Configurations;
 import cn.ohyeah.mobile.utils.ThreadSafeOfConnectionManager;
 import cn.ohyeah.mobile.utils.Util;
 
-@Service("smsService")
+@Service("service_sms")
 public class SmsServiceImpl implements ISmsService{
 	
 	private static Log log = LogFactory.getLog(SmsServiceImpl.class);
